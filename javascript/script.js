@@ -76,6 +76,17 @@ function setPositionForWeatherInfo() {
 	weatherContainer.style.visibility = 'visible';
 }
 
+function initMap() {
+	const {lat, lon} = data.coord;
+	let searchTerm = document.getElementById('searchInput').value;
+	let searchTermLatitude = lat;
+    let searchTermLongitude = lon;
+	let uluru = {lat: searchTermLatitude, lon: searchTermLongitude};
+	let map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 10, center: uluru});
+  	let marker = new google.maps.Marker({position: uluru, map: map});
+}
+
 document.getElementById('searchBtn').addEventListener('click', () => {
 	let searchTerm = document.getElementById('searchInput').value;
 	if (searchTerm)
